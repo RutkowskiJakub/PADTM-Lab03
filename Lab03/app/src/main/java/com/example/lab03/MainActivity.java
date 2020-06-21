@@ -8,11 +8,15 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Toast.makeText(getApplicationContext(),
+                        "Kliknięto przycisk FAB",
+                        Toast.LENGTH_SHORT).show();
             }
+
         });
     }
 
@@ -45,11 +51,48 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (id) {
+            case R.id.action_settings:
+                Toast.makeText(getApplicationContext(),
+                        "Wybrano action_settings",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_settings2:
+                Toast.makeText(getApplicationContext(),
+                        "Wybrano action_settings2",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_settings3:
+                Toast.makeText(getApplicationContext(),
+                        "Wybrano action_settings3",
+                        Toast.LENGTH_SHORT).show();
+                break;
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void buttonLogin(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void buttonClick2(View view){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+    }
+
+
+    public void buttonClick(View view){
+
+
+        Toast.makeText(getApplicationContext(),
+                "Kliknieto przycisk Button",
+                Toast.LENGTH_SHORT).show();
+        }
 }
+
+
