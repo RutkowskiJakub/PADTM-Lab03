@@ -13,6 +13,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.content.Intent;
+import com.example.lab03.ui.login.LoginActivity;
+import java.util.Random;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -86,6 +90,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void buttonLosuj(View view){
+        Random r = new Random();
+        int i = r.nextInt()%4;
+        ImageView imageview = findViewById(R.id.imageView);
+        switch (i){
+            case 0:
+                imageview.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_menu_crop, getTheme()));
+                break;
+            case 1:
+                imageview.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_menu_directions, getTheme()));
+                break;
+            case 2:
+                imageview.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_menu_rotate, getTheme()));
+                break;
+            case 3:
+                imageview.setImageDrawable(getResources().getDrawable(R.drawable.pic, getTheme()));
+                break;
+        }
+    }
+
     public void buttonClick(View view){
 
 
@@ -93,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
                 "Kliknieto przycisk Button",
                 Toast.LENGTH_SHORT).show();
         }
+
+
+
+
 }
 
 
